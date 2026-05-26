@@ -1,6 +1,16 @@
 # Build output
-out/
-!out/marcolanconelli-cv.pdf
+out/*.aux
+out/*.log
+out/*.bcf
+out/*.blg
+out/*.fls
+out/*.fdb_latexmk
+out/*.run.xml
+out/*.synctex.gz
+out/*.toc
+out/*.out
+out/*.bbl
+out/*.xmpi
 
 # Editor
 *.swp

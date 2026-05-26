@@ -4,7 +4,9 @@ SRC  = src
 LIB  = lib
 OUT  = out
 
-SRCS = $(wildcard $(SRC)/*.tex) $(wildcard $(SRC)/*.bib) $(wildcard $(SRC)/images/*)
+SRCS = $(wildcard $(SRC)/*.tex) $(wildcard $(SRC)/*.bib) $(wildcard $(SRC)/*.xmpi) \
+       $(wildcard $(SRC)/images/*) \
+       $(wildcard $(LIB)/*.tex) $(wildcard $(LIB)/*.cls)
 
 .PHONY: all clean cleanall
 
