@@ -1,15 +1,8 @@
-# LaTeX auxiliary files
-*.aux
-*.log
-*.synctex.gz
-*.toc
-*.out
-*.bbl
-*.blg
-*.fls
-*.fdb_latexmk
-*.bak
+# Build output
+out/
+!out/marcolanconelli-cv.pdf
 
 # Editor
 *.swp
 .DS_Store
+*.bak

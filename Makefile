@@ -1,15 +1,24 @@
-LAT = pdflatex -interaction=nonstopmode
+NAME = marcolanconelli-cv
+LAT  = pdflatex -interaction=nonstopmode
+SRC  = src
+LIB  = lib
+OUT  = out
 
 .PHONY: all clean cleanall
 
-all:
-	$(LAT) sample.tex
-	biber sample
-	$(LAT) sample.tex
-	$(LAT) sample.tex
+all: $(OUT)/$(NAME).pdf
+
+$(OUT)/$(NAME).pdf:
+	mkdir -p $(OUT)
+	cd $(SRC) && TEXINPUTS=.:../$(LIB): $(LAT) -output-directory=../$(OUT) $(NAME).tex
+	biber $(OUT)/$(NAME)
+	cd $(SRC) && TEXINPUTS=.:../$(LIB): $(LAT) -output-directory=../$(OUT) $(NAME).tex
+	cd $(SRC) && TEXINPUTS=.:../$(LIB): $(LAT) -output-directory=../$(OUT) $(NAME).tex
 
 clean:
-	rm -f *.aux *.log *.synctex.gz *.toc *.out *.bbl *.blg *.fls *.fdb_latexmk *.bcf *.run.xml
+	rm -f $(OUT)/*.aux $(OUT)/*.log $(OUT)/*.bcf $(OUT)/*.blg \
+	      $(OUT)/*.fls $(OUT)/*.fdb_latexmk $(OUT)/*.run.xml \
+	      $(OUT)/*.synctex.gz $(OUT)/*.toc $(OUT)/*.out
 
 cleanall: clean
-	rm -f sample.pdf
+	rm -f $(OUT)/$(NAME).pdf
