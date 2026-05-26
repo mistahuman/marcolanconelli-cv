@@ -4,11 +4,13 @@ SRC  = src
 LIB  = lib
 OUT  = out
 
+SRCS = $(wildcard $(SRC)/*.tex) $(wildcard $(SRC)/*.bib) $(wildcard $(SRC)/images/*)
+
 .PHONY: all clean cleanall
 
 all: $(OUT)/$(NAME).pdf
 
-$(OUT)/$(NAME).pdf:
+$(OUT)/$(NAME).pdf: $(SRCS)
 	mkdir -p $(OUT)
 	cd $(SRC) && TEXINPUTS=.:../$(LIB): $(LAT) -output-directory=../$(OUT) $(NAME).tex
 	biber $(OUT)/$(NAME)
